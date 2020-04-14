@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-mybatis</module>
+        <module>handmybatis</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
