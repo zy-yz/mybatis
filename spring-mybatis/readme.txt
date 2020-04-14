@@ -1,0 +1,1 @@
+mybatis和Spring的整合，也可以单独使用
