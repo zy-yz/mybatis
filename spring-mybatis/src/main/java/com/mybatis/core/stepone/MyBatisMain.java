@@ -13,7 +13,7 @@ import java.io.Reader;
  * @Date 2020/4/14
  * @Description
  **/
-public class MyBatisMain {
+public class MyBatisMain{
 
     private static SqlSessionFactory sqlSessionFactory;
 
