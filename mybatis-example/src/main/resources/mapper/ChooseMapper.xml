@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peppers.mybatisexample.mapper.ChooseMapper">
+
+<!--    choose标签是按顺序判断其内部when标签中的test条件出否成立，如果有一个成立，则 choose 结束。-->
+<!--    当 choose 中所有 when 的条件都不满则时，则执行 otherwise 中的sql。-->
+<!--    类似于Java 的 switch 语句，choose 为 switch，when 为 case，otherwise 则为 default。-->
+
+
+
+    <!--  choose(判断参数) - 按顺序将实体类 User 第一个不为空的属性作为：where条件 -->
+    <select id="getUserList_choose" resultType="com.peppers.mybatisexample.eneity.Entity">
+        SELECT *
+        FROM user2 u
+        <where>
+            <choose>
+                <when test="username !=null ">
+                    u.username LIKE CONCAT(CONCAT('%', #{username, jdbcType=VARCHAR}),'%')
+                </when >
+                <when test="sex != null and sex != '' ">
+                    AND u.sex = #{sex, jdbcType=INTEGER}
+                </when >
+                <when test="birthday != null ">
+                    AND u.birthday = #{birthday, jdbcType=DATE}
+                </when >
+                <otherwise>
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peppers.mybatisexample.mapper.ForeachMapper">
+
+
+
+
+
+<!--    foreach元素的属性主要有item，index，collection，open，separator，close。-->
+
+<!--    item：集合中元素迭代时的别名，-->
+
+<!--    index：集合中元素迭代时的索引-->
+
+<!--    open：常用语where语句中，表示以什么开始，比如以'('开始-->
+
+<!--    separator：表示在每次进行迭代时的分隔符，-->
+
+<!--    close 常用语where语句中，表示以什么结束，-->
+
+<!--    在使用foreach的时候最关键的也是最容易出错的就是collection属性，该属性是必须指定的，但是在不同情况下，该属性的值是不一样的，主要有一下3种情况：-->
+
+<!--    如果传入的是单参数且参数类型是一个List的时候，collection属性值为list .-->
+
+<!--    如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array .-->
+
+<!--    如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可以封装成map，实际上如果你在传入参数的时候，在MyBatis里面也是会把它封装成一个Map的，map的key就是参数名，所以这个时候collection属性值就是传入的List或array对象在自己封装的map里面的key.-->
+
+    <select id="queryById" resultType="com.peppers.mybatisexample.eneity.Entity">
+        select * from user2
+        where id in
+        <foreach collection="userids" item="userid" index="index" open="(" separator="," close=")">
+        #{userid}
+        </foreach>
+    </select>
+
+</mapper>

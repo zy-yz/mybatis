@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peppers.mybatisexample.mapper.ConcatMapper">
+
+
+<!--    比如说我们想要进行条件查询,但是几个条件不是每次都要使用,那么我们就可以-->
+<!--    通过判断是否拼接到sql中-->
+    <select id="queryByName" resultType="com.peppers.mybatisexample.eneity.Entity" >
+        SELECT *  from entity
+        <where>
+            <if test="name!=null">
+                name like concat('%',concat(#{name},'%'))
+            </if>
+        </where>
+    </select>
+</mapper>
