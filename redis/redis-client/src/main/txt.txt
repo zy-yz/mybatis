@@ -1,0 +1,32 @@
+构造方法 -创建client 赋值
+redis.clients.jedis.Jedis.Jedis(java.lang.String, int)
+  >redis.clients.jedis.Client
+    >redis.clients.jedis.Connection.Connection(java.lang.String, int)
+
+set|get方法： 创建socket 然后发送数据 得到发送的结果
+    redis.clients.jedis.Jedis.set(java.lang.String, java.lang.String)
+     >redis.clients.jedis.Connection.sendCommand(redis.clients.jedis.Protocol.Command, byte[]...)
+       >redis.clients.jedis.Connection.connect 创建socket
+         >redis.clients.jedis.Protocol.sendCommand(redis.clients.util.RedisOutputStream, byte[], byte[]...) output write 发送命令
+
+
+*3  数组3
+
+$3  字符串3
+ S E T
+
+$6   字符串6
+w u k o n g
+
+$8  字符串8
+2 0 1 81 2  1 2
+
+wukong 2018
+get wukong
+
+
+For Simple Strings the first byte of the reply is "+" 第一个简单的字符 答复是+
+For Errors the first byte of the reply is "-"第一个错误 答复是-
+For Integers the first byte of the reply is ":"第一个数组 答复是:
+For Bulk Strings the first byte of the reply is "$"第一个字符串 答复是$
+For Arrays the first byte of the reply is "*" 第一个字符为数组是*

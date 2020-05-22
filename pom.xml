@@ -6,6 +6,8 @@
     <modules>
         <module>spring-mybatis</module>
         <module>handmybatis</module>
+        <module>redis</module>
+        <module>redis</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
